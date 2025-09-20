@@ -6,6 +6,11 @@ export const startup = defineType({
   type: "document",
   fields: [
     defineField({
+      name: "createdAt",
+      type: "date",
+      initialValue: new Date().toISOString(),
+    }),
+    defineField({
       name: "title",
       type: "string",
     }),
