@@ -23,7 +23,7 @@ export const createPitch = async (
     parseServerActionResponse({ error: "Not signed in", status: "ERROR" });
 
   const { title, description, category, link } = Object.fromEntries(
-    Array.from(form).filter(([key]) => key !== "pich")
+    Array.from(form).filter(([key]) => key !== "pitch")
   );
 
   const slug = slugify(title as string);
@@ -54,7 +54,7 @@ export const createPitch = async (
       status: "SUCCESS",
     });
   } catch (error) {
-    console.log(error);
+    console.log("Error in createPitch", error);
     return parseServerActionResponse({
       error: JSON.stringify(error),
       status: "ERROR",

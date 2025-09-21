@@ -12,6 +12,7 @@ import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard from "@/components/StartupCard";
+import { formatDate } from "@/lib/utils";
 
 type StartupCardType = {
   _id: string;
@@ -46,7 +47,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
   return (
     <>
       <section className="pink_container !min-h-[230px]">
-        <p className="tag">{post?.createdAt}</p>
+        <p className="tag">{formatDate(post?.createdAt)}</p>
         <h1 className="heading">{post.title}</h1>
         <p className="sub-heading !max-w-5xl">{post.description}</p>
       </section>
