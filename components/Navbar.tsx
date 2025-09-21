@@ -1,12 +1,11 @@
 import Link from "next/link";
 
 import { auth, signIn, signOut } from "@/auth";
-import { LogIn, LogOut, Plus } from "lucide-react";
+import { LogOut, Plus } from "lucide-react";
 import { Avatar, AvatarImage } from "./ui/avatar";
 
 const Navbar = async () => {
   const session = await auth();
-  console.log(session);
   return (
     <header className="px-5 py-3 bg-white shadow-sm font-work-sans">
       <nav className="flex items-center justify-between">

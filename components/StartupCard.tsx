@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { EyeIcon } from "lucide-react";
 import { auth } from "@/auth";
 
-const StartupCard = async ({ post }: { post: StartupTypeCard }) => {
+const StartupCard = async ({ post }: { post: any }) => {
   const session = await auth();
 
   const {
