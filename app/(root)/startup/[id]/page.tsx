@@ -1,4 +1,3 @@
-import { formatDate } from "@/lib/utils";
 import { client } from "@/sanity/lib/client";
 import {
   PLAYLIST_BY_SLUG_QUERY,
@@ -13,6 +12,20 @@ import { Suspense } from "react";
 import { Skeleton } from "@/components/ui/skeleton";
 import View from "@/components/View";
 import StartupCard from "@/components/StartupCard";
+
+type StartupCardType = {
+  _id: string;
+  createdAt: string;
+  views: number;
+  author: {
+    _id: string;
+    name: string;
+  };
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+};
 
 export const experimental_ppr = true;
 
@@ -38,9 +51,11 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
         <p className="sub-heading !max-w-5xl">{post.description}</p>
       </section>
       <section className="section_container">
-        <img
+        <Image
           src={post.image}
           alt="thumbnail"
+          width={800}
+          height={400}
           className="w-full h-auto rounded-xl"
         />
         <div className="max-w-4xl mx-auto mt-10 space-y-5">
@@ -84,7 +99,7 @@ const page = async ({ params }: { params: Promise<{ id: string }> }) => {
             <p className="text-30-semibold">Editor Picks</p>
 
             <ul className="mt-7 card_grid-sm">
-              {editorPosts.map((post: StartupTypeCard, index: number) => (
+              {editorPosts.map((post: StartupCardType, index: number) => (
                 <StartupCard key={index} post={post} />
               ))}
             </ul>

@@ -10,7 +10,7 @@ import { Button } from "./ui/button";
 import { Send } from "lucide-react";
 import { formSchema } from "@/lib/validation";
 import z from "zod";
-import { createPitch } from "@/lib/action";
+import { createPitch, ActionState } from "@/lib/action";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
@@ -20,7 +20,7 @@ const StartupForm = () => {
 
   const router = useRouter();
 
-  const handleSubmit = async (prevState: any, formData: FormData) => {
+  const handleSubmit = async (prevState: ActionState, formData: FormData) => {
     try {
       const formValues = {
         title: formData.get("title") as string,
@@ -54,7 +54,7 @@ const StartupForm = () => {
     }
   };
 
-  const [state, formAction, isPending] = useActionState(handleSubmit, {
+  const [, formAction, isPending] = useActionState(handleSubmit, {
     error: "",
     status: "INITIAL",
   });

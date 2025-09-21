@@ -4,7 +4,21 @@ import { Button } from "./ui/button";
 import { EyeIcon } from "lucide-react";
 import { auth } from "@/auth";
 
-const StartupCard = async ({ post }: { post: any }) => {
+type StartupCardType = {
+  _id: string;
+  createdAt: string;
+  views: number;
+  author: {
+    _id: string;
+    name: string;
+  };
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+};
+
+const StartupCard = async ({ post }: { post: StartupCardType }) => {
   const session = await auth();
 
   const {
@@ -48,7 +62,13 @@ const StartupCard = async ({ post }: { post: any }) => {
       </div>
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
-        <img src={image} alt="placeholder" className="startup-card_img" />
+        <Image
+          src={image}
+          alt="placeholder"
+          width={400}
+          height={200}
+          className="startup-card_img"
+        />
       </Link>
 
       <div className="gap-3 mt-5 flex-between">

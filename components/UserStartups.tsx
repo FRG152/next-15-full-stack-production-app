@@ -4,13 +4,29 @@ import StartupCard from "./StartupCard";
 import { cn } from "@/lib/utils";
 import { Skeleton } from "./ui/skeleton";
 
+type StartupType = {
+  _id: string;
+  createdAt: string;
+  views: number;
+  author: {
+    _id: string;
+    name: string;
+  };
+  image: string;
+  title: string;
+  description: string;
+  category: string;
+};
+
 const UserStartups = async ({ id }: { id: string }) => {
-  const startups = await client.fetch(STARTUPS_BY_AUTHOR_QUERY, { id });
+  const startups: StartupType[] = await client.fetch(STARTUPS_BY_AUTHOR_QUERY, {
+    id,
+  });
 
   return (
     <>
       {startups.length > 0 ? (
-        startups.map((startup: any) => (
+        startups.map((startup: StartupType) => (
           <StartupCard key={startup._id} post={startup} />
         ))
       ) : (

@@ -6,8 +6,14 @@ import { parseServerActionResponse } from "./utils";
 import slugify from "react-slugify";
 import { writeClient } from "@/sanity/lib/write-client";
 
+export type ActionState = {
+  error: string;
+  status: "INITIAL" | "SUCCESS" | "ERROR";
+  [key: string]: unknown;
+};
+
 export const createPitch = async (
-  state: any,
+  state: ActionState,
   form: FormData,
   pitch: string
 ) => {
