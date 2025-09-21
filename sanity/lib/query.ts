@@ -23,7 +23,7 @@ export const STARTUP_BY_ID_QUERY =
   createdAt,
   category,
   author -> {
-    id, name, image, bio
+    id, name, image, bio, username
   },
   description,
   image,

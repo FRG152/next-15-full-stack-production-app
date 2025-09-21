@@ -2,8 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { EyeIcon } from "lucide-react";
+import { auth } from "@/auth";
 
-const StartupCard = ({ post }: { post: StartupTypeCard }) => {
+const StartupCard = async ({ post }: { post: StartupTypeCard }) => {
+  const session = await auth();
+
   const {
     _id,
     createdAt,
@@ -35,7 +38,7 @@ const StartupCard = ({ post }: { post: StartupTypeCard }) => {
         </div>
         <Link href={`/user/${author_id}`}>
           <Image
-            src="https://placeholder.co/48x48"
+            src={`${session?.user?.image}`}
             alt="placeholder"
             width={48}
             height={48}
