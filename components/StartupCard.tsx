@@ -10,8 +10,9 @@ type StartupCardType = {
   createdAt: string;
   views: number;
   author: {
-    _id: string;
+    id: string;
     name: string;
+    image: string;
   };
   image: string;
   title: string;
@@ -26,12 +27,14 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
     _id,
     createdAt,
     views,
-    author: { _id: author_id, name },
+    author: { id: author_id, name, image: author_image },
     image,
     title,
     description,
     category,
   } = post;
+
+  console.log(author_id);
 
   return (
     <li className="startup-card group">
@@ -53,7 +56,7 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
         </div>
         <Link href={`/user/${author_id}`}>
           <Image
-            src={`${session?.user?.image}`}
+            src={`${author_image}`}
             alt="placeholder"
             width={48}
             height={48}
