@@ -12,6 +12,7 @@ import { formSchema } from "@/lib/validation";
 import z from "zod";
 import { createPitch } from "@/lib/action";
 import { useRouter } from "next/navigation";
+import { toast } from "sonner";
 
 const StartupForm = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
@@ -33,6 +34,7 @@ const StartupForm = () => {
       const result = await createPitch(prevState, formData, value);
 
       if (result.status === "SUCCESS") {
+        toast("Your pitch has been created!");
         router.push(`/startup/${result._id}`);
       }
       return result;
@@ -43,6 +45,7 @@ const StartupForm = () => {
         setErrors(fieldErrors as unknown as Record<string, string>);
         return { ...prevState, error: "Validation Failed", status: "ERROR" };
       }
+      toast("An unexpected error has ocurred");
       return {
         ...prevState,
         error: "An unexpected error has ocurred",
