@@ -42,14 +42,14 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
       </div>
       <div className="gap-5 mt-5 flex-between">
         <div className="flex-1">
-          <Link href={`/user/${author_id}`}>
+          <div>
             <p className="text-16-medium line-clamp-1">{name}</p>
-          </Link>
+          </div>
           <Link href={`/startup/${_id}`}>
             <h3 className="text-26-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
-        <Link href={`/user/${author_id}`}>
+        <div>
           <Image
             src={`${author_image}`}
             alt="placeholder"
@@ -57,7 +57,7 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
             height={48}
             className="rounded-full"
           />
-        </Link>
+        </div>
       </div>
       <Link href={`/startup/${_id}`}>
         <p className="startup-card_desc">{description}</p>
