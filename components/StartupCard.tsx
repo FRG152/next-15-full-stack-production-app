@@ -45,12 +45,8 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
           <Link href={`/user/${_id}`}>
             <p className="text-16-medium line-clamp-1">{name}</p>
           </Link>
-          <Link href={`/startup/${_id}`}>
-            <h3 className="text-26-semibold line-clamp-1">
-              {title}
-              {_id}
-              {author_id}
-            </h3>
+          <Link href={`/startup/${author_id}`}>
+            <h3 className="text-26-semibold line-clamp-1">{title}</h3>
           </Link>
         </div>
         <Link href={`/user/${author_id}`}>
