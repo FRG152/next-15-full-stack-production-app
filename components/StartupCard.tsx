@@ -34,8 +34,6 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
     category,
   } = post;
 
-  console.log(author_id);
-
   return (
     <li className="startup-card group">
       <div className="flex-between">
