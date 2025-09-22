@@ -9,8 +9,9 @@ type StartupType = {
   createdAt: string;
   views: number;
   author: {
-    _id: string;
+    id: string;
     name: string;
+    image: string;
   };
   image: string;
   title: string;
