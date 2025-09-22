@@ -31,8 +31,6 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
     category,
   } = post;
 
-  console.log("StartupCard author_id", author_id);
-
   return (
     <li className="startup-card group">
       <div className="flex-between">
@@ -44,7 +42,7 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
       </div>
       <div className="gap-5 mt-5 flex-between">
         <div className="flex-1">
-          <Link href={`/user/${_id}`}>
+          <Link href={`/user/${author_id}`}>
             <p className="text-16-medium line-clamp-1">{name}</p>
           </Link>
           <Link href={`/startup/${_id}`}>
