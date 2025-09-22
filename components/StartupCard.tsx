@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import { Button } from "./ui/button";
 import { EyeIcon } from "lucide-react";
-import { auth } from "@/auth";
 import { formatDate } from "@/lib/utils";
 
 type StartupCardType = {
@@ -21,8 +20,6 @@ type StartupCardType = {
 };
 
 const StartupCard = async ({ post }: { post: StartupCardType }) => {
-  const session = await auth();
-
   const {
     _id,
     createdAt,
@@ -33,6 +30,8 @@ const StartupCard = async ({ post }: { post: StartupCardType }) => {
     description,
     category,
   } = post;
+
+  console.log("StartupCard author_id", author_id);
 
   return (
     <li className="startup-card group">
